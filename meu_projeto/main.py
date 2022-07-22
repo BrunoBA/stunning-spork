@@ -1,10 +1,11 @@
-from pages import MainMenu, MultiplayerPage, SinglePlayerPage
+from pages.MultiplayerPage import MultiplayerPage
+from pages.MainMenu import MainMenu
+from pages.SinglePlayerPage import SinglePlayerPage
 import psutil
 
-
-main_menu = MainMenu.MainMenu(
-    MultiplayerPage.MultiplayerPage,
-    SinglePlayerPage.SinglePlayerPage
+main_menu = MainMenu(
+    MultiplayerPage,
+    SinglePlayerPage
 )
 
 main_menu.start()
