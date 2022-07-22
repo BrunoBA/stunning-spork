@@ -1,6 +1,5 @@
-class Computer:
-    def __init__(self) -> None:
-        self._name = "Computer"
+from players.Player import Player
 
-    def get_name(self) -> str:
-        return self._name
+class Computer(Player):
+    def __init__(self):
+        super().__init__("Computer")

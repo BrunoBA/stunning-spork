@@ -1,11 +1,11 @@
 
 class Player:
-    def __init__(self) -> None:
-        self._name = ""
-        self._symbol = ""
+    def __init__(self, nome="", symbol="") -> None:
+        self.name = ""
+        self.symbol = ""
 
     def set_name(self, name) -> None:
-        self._name = name
+        self.name = name
 
     def set_symbol(self, symbol) -> None:
-        self._symbol = symbol
+        self.symbol = symbol

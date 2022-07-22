@@ -1,3 +1,4 @@
+from colorama import Fore, Back, Style
 
 class MainMenu:
 
@@ -19,8 +20,9 @@ Digite uma opção:
             option = input(self.QUESTION_TEXT)
             
             if (option not in ["1", "2", "3"]):
-                print("Opção errada")
+                print(Fore.RED + "Opção inválida! Tente novamente" + Style.RESET_ALL)
                 option = None
+                
         return option
         
     def start(self):
