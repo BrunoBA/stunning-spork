@@ -33,7 +33,7 @@ class Board:
         if (int(line) < 1 or int(line) > 3):
             return False
 
-        return self._matrix[int(line) - 1][int(col) - 1] != self.EMPTY_VALUE
+        return self._matrix[int(line) - 1][int(col) - 1] == self.EMPTY_VALUE
 
     def set_position(self, symbol, line, col) -> None:
         self._matrix[line - 1][col - 1] = symbol
@@ -148,7 +148,7 @@ class Board:
         if result is None:
             result = ""
 
-        return str(result) + "\n" + """
+        return """
         col 1   col 2   col 3
               |       |       
 line 1    {}   |   {}   |   {}   

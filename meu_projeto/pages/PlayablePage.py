@@ -45,3 +45,10 @@ class PlayablePage:
         while():
             player = self.get_current_user()
             board = player.play
+
+    def get_user_by_symbol(self, symbol:str):
+        for player in self._players:
+            if (player.get_symbol() == symbol):
+                return player
+
+        return None

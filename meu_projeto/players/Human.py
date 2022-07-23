@@ -9,15 +9,15 @@ class Human(Player):
     def play(self, board: Board):
 
         ask_position = True
-        while (ask_position):
-            line = input("Please insert line: \n")
-            col = input("Please insert column: \n")
-        
-            ask_position = board.is_valid_position(line, col)
-            print(ask_position, line, col)
-            if (ask_position == False):
+        while(ask_position):
+            line = input("Please insert a line:\n")
+            col = input("Please insert a col:\n")
+
+            if (board.is_valid_position(line, col)):
+                ask_position = False
+            else:
                 self.invalid_option()
-                ask_position = True
+                print(board)
 
         board.set_position(self.get_symbol(), int(line), int(col))
         print(board)
