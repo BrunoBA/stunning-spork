@@ -1,4 +1,3 @@
-
 from pages.PlayablePage import PlayablePage
 
 
@@ -22,6 +21,7 @@ class MultiplayerPage(PlayablePage):
 
         winner_player = self.get_user_by_symbol(winner.get_symbol())
 
+        self.winner_feedback()
         print(winner_player)
 
         self._board.initialize_matrix()

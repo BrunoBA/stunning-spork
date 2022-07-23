@@ -1,4 +1,5 @@
 from random import randint, shuffle
+from colorama import Fore, Back, Style
 from board.Board import Board
 from players.Player import Player
 
@@ -11,6 +12,9 @@ class PlayablePage:
         self._players = [p_one, p_two]
         self._page = None
         self._board = board
+
+    def winner_feedback(self):
+        print(Back.GREEN + "             Winner            " + Style.RESET_ALL)
 
     def initalize_users(self):
         for index, _ in enumerate(self._players):

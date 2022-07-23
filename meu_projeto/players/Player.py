@@ -2,6 +2,7 @@ from colorama import Fore, Back, Style
 import abc
 
 from board.Board import Board
+from Symbol import Symbol
 
 
 class Player:
@@ -16,7 +17,7 @@ class Player:
         self.symbol = symbol
 
     def get_symbol(self) -> str:
-        return self.symbol
+        return str(self.symbol)
 
     def get_name(self) -> str:
         return self.name
@@ -34,4 +35,4 @@ class Player:
         return """
 Name: {}
 Symbol: {}
-""".format(self.name, self.symbol)
+""".format(self.name, Symbol(self.symbol))

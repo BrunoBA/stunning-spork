@@ -18,10 +18,11 @@ class Human(Player):
             else:
                 self.invalid_option()
                 print(board)
+                print(self)
 
         board.set_position(self.get_symbol(), int(line), int(col))
         print(board)
         
 
     def __str__(self) -> str:
-        return "Human"+super().__str__()
+        return "Player"+super().__str__()
