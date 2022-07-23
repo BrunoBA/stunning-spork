@@ -1,11 +1,17 @@
-class SinglePlayerPage:
-    def __init__(self, player_one, player_two):
-        self._players = [player_one, player_two]
+#import os
+
+from pages.PlayablePage import PlayablePage
+
+class SinglePlayerPage(PlayablePage):
+    def __init__(self, player_one, computer, board):
+        super().__init__(player_one, computer, board)
 
     def handle(self):
-        print("Hello I'm the the single player page")
-        print(self._players)
+        self.randomize_position()
+        user = self.get_current_user()
+
+        user.play(self._board)
+
+    
         self._page.start()
 
-    def set_next_page(self, page) -> None:
-        self._page = page

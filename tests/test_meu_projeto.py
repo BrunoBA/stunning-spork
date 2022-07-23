@@ -1,5 +1,8 @@
-from meu_projeto import __version__
 
+#from meu_projeto.board.Board import Board
+from meu_projeto.pages.MainMenu import MainMenu
 
-def test_version():
-    assert __version__ == '0.1.0'
+def test_board():
+#    board = Board()
+    main_menu = MainMenu()
+    assert True == True

@@ -1,5 +1,8 @@
 from colorama import Fore, Back, Style
 
+from pages.MultiplayerPage import MultiplayerPage
+from pages.SinglePlayerPage import SinglePlayerPage
+
 class MainMenu:
 
     QUESTION_TEXT = """
@@ -10,7 +13,7 @@ Digite uma opção:
 
 """
 
-    def __init__(self, one_player, two_players):
+    def __init__(self, one_player: SinglePlayerPage, two_players: MultiplayerPage):
         self.one_player = one_player
         self.two_players = two_players
 
@@ -32,7 +35,8 @@ Digite uma opção:
         self.two_players.set_next_page(self)
         
         if (option == "1"):
-            self.one_player.handle()
+            #self.one_player.handle()
+            self.two_players.handle()
 
         if (option == "2"):
             self.two_players.handle()

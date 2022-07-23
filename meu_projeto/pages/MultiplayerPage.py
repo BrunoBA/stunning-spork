@@ -1,12 +1,21 @@
 
-class MultiplayerPage:
-    def __init__(self, player, computer):
-        self._players = [player, computer]
+from pages.PlayablePage import PlayablePage
+
+
+class MultiplayerPage(PlayablePage):
+    def __init__(self, player_one, player_two, board):
+        super().__init__(player_one, player_two, board)
 
     def handle(self):
-        print(self)
-        print(self._players)
-        self._page.start()
+        self.randomize_position()
+        self.initalize_users()
 
-    def set_next_page(self, page) -> None:
-        self._page = page
+        winner = None
+        while (winner is None):
+            user = self.get_current_user()
+            user.play(self._board)
+            self.next_player()
+
+            winner = self._board.check_winner()
+        self._board.initialize_matrix()
+        self._page.start()

@@ -11,13 +11,33 @@ class Board:
     EMPTY_VALUE = " "
 
     def __init__(self) -> None:
-        #self.initialize_matrix()
+        self.initialize_matrix()
+        """
         self._matrix = [
-            ['X', 'X', 'X'],
             [' ', ' ', ' '],
-            ['X', 'O', 'O']
+            [' ', ' ', ' '],
+            [' ', ' ', ' ']
         ]
+        """
     
+    def is_valid_position(self, line, col) -> bool:
+        if not line.isnumeric() or not col.isnumeric():
+            return False
+
+        if len(line) == 0 or len(col) == 0:
+            return False
+
+        if (int(col) < 1 or int(col) > 3):
+            return False
+
+        if (int(line) < 1 or int(line) > 3):
+            return False
+
+        return self._matrix[int(line) - 1][int(col) - 1] != self.EMPTY_VALUE
+
+    def set_position(self, symbol, line, col) -> None:
+        self._matrix[line - 1][col - 1] = symbol
+
     def initialize_matrix(self) -> None:
         self._matrix = []
         for _ in range(0, 3):
@@ -134,7 +154,7 @@ class Board:
 line 1    {}   |   {}   |   {}   
        _______|_______|_______
               |       |      
-line 2   {}    |   {}   |   {}    
+line 2    {}   |   {}   |   {}    
        _______|_______|_______  
               |       |      
 line 3    {}   |   {}   |   {}    
