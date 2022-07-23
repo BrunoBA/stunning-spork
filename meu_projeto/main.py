@@ -1,9 +1,14 @@
+from Board import Board
 from pages.MultiplayerPage import MultiplayerPage
 from pages.MainMenu import MainMenu
 from pages.SinglePlayerPage import SinglePlayerPage
 from players.Human import Human
 from players.Computer import Computer
 import psutil
+
+board = Board()
+
+print(board)
 
 multiplayer_page = MultiplayerPage(Human(), Human())
 single_player_page = SinglePlayerPage(Human(), Computer())
