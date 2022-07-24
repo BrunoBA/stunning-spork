@@ -20,6 +20,9 @@ class Board:
         ]
         """
     
+    def draw(self) -> None:
+        print(self)
+
     def is_valid_position(self, line, col) -> bool:
         if not line.isnumeric() or not col.isnumeric():
             return False

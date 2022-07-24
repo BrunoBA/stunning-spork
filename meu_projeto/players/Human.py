@@ -17,12 +17,14 @@ class Human(Player):
                 ask_position = False
             else:
                 self.invalid_option()
-                print(board)
-                print(self)
+                board.draw()
+                self.draw()
 
         board.set_position(self.get_symbol(), int(line), int(col))
-        print(board)
+        board.draw()
         
+    def draw(self) -> None:
+        print(self)
 
     def __str__(self) -> str:
         return "Player"+super().__str__()
