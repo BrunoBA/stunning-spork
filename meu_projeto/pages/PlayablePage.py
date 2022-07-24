@@ -18,8 +18,13 @@ class PlayablePage:
 
     def initalize_users(self):
         for index, _ in enumerate(self._players):
-            user_name = str(input("Please select the user name:\n"))
-            self._players[index].set_name(user_name)
+            current_player = self._players[index]
+            extra_text = ""
+            if (len(current_player.get_name()) > 0):
+                extra_text = " Press enter to fill ({})".format(current_player.get_name())
+            user_name = str(input("Please select the user name: {}\n".format(extra_text)))
+            if (len(user_name) > 0):
+                current_player.set_name(user_name)
 
     def randomize_position(self) -> None:
         symbols = ["O", "X"]
