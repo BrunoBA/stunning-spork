@@ -1,8 +1,8 @@
 from colorama import Fore, Back, Style
 import abc
 
-from board.Board import Board
-from Symbol import Symbol
+from meu_projeto.board.Board import Board
+from meu_projeto.Symbol import Symbol
 
 
 class Player:

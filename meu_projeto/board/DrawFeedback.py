@@ -1,4 +1,5 @@
-from board.BoardFeedback import BoardFeedback
+from meu_projeto.board.BoardFeedback import BoardFeedback
+
 
 class DrawFeedback(BoardFeedback):
     def __init__(self):

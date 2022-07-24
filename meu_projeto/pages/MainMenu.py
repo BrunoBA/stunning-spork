@@ -1,7 +1,7 @@
 from colorama import Fore, Back, Style
 
-from pages.MultiplayerPage import MultiplayerPage
-from pages.SinglePlayerPage import SinglePlayerPage
+from meu_projeto.pages.MultiplayerPage import MultiplayerPage
+from meu_projeto.pages.SinglePlayerPage import SinglePlayerPage
 
 class MainMenu:
 

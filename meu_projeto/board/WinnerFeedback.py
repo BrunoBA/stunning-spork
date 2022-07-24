@@ -1,4 +1,4 @@
-from board.BoardFeedback import BoardFeedback
+from meu_projeto.board.BoardFeedback import BoardFeedback
 
 class WinnerFeedback(BoardFeedback):
     def __init__(self, symbol, positions, type):

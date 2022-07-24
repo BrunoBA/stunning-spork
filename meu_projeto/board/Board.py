@@ -1,9 +1,9 @@
 from colorama import Fore, Style
 from typing import Optional
 
-from board.BoardFeedback import BoardFeedback
-from board.WinnerFeedback import WinnerFeedback
-from board.DrawFeedback import DrawFeedback
+from meu_projeto.board.BoardFeedback import BoardFeedback
+from meu_projeto.board.WinnerFeedback import WinnerFeedback
+from meu_projeto.board.DrawFeedback import DrawFeedback
 
 
 class Board:

@@ -1,5 +1,4 @@
-from pages.PlayablePage import PlayablePage
-
+from meu_projeto.pages.PlayablePage import PlayablePage
 
 class MultiplayerPage(PlayablePage):
     def __init__(self, player_one, player_two, board):

@@ -1,6 +1,6 @@
 from colorama import Fore, Style
-from board.Board import Board
-from players.Player import Player
+from meu_projeto.board.Board import Board
+from meu_projeto.players.Player import Player
 
 class Human(Player):
     def __init__(self):

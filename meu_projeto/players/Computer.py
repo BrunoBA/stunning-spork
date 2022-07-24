@@ -1,5 +1,5 @@
-from board.Board import Board
-from players.Player import Player
+from meu_projeto.board.Board import Board
+from meu_projeto.players.Player import Player
 
 class Computer(Player):
     def __init__(self):
