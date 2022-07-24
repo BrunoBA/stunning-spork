@@ -12,6 +12,13 @@ class Board:
 
     def __init__(self) -> None:
         self.initialize_matrix()
+        """
+        self._matrix = [
+            ['X', 'X', 'O'],
+            ['O', 'O', 'X'],
+            ['X', ' ', ' ']
+        ]
+        """
     
     def is_valid_position(self, line, col) -> bool:
         if not line.isnumeric() or not col.isnumeric():
@@ -113,6 +120,9 @@ class Board:
         for check in checks:
             if (check is not None):
                 return check
+
+        if(self.__is_complete()):
+            return DrawFeedback()
 
         return None
 

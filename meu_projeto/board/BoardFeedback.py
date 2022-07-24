@@ -1,3 +1,4 @@
+import abc
 
 class BoardFeedback:
     def __init__(self, symbol, positions, result) -> None:
@@ -13,3 +14,7 @@ class BoardFeedback:
         return """Symbol: {}
 Positions: {}
 Result: {}""".format(self.symbol, self.positions, self.result)
+
+    @abc.abstractmethod
+    def draw_feedback(self) -> None:
+        pass

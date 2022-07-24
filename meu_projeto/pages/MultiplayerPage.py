@@ -1,3 +1,4 @@
+from meu_projeto.board.WinnerFeedback import WinnerFeedback
 from meu_projeto.pages.PlayablePage import PlayablePage
 
 class MultiplayerPage(PlayablePage):
@@ -9,19 +10,20 @@ class MultiplayerPage(PlayablePage):
         self.initalize_users()
         print(self._board)
 
-        winner = None
-        while (winner is None):
+        result = None
+        while (result is None):
             user = self.get_current_user()
             print(user)
             user.play(self._board)
             self.next_player()
 
-            winner = self._board.check_winner()
+            result = self._board.check_winner()
 
-        winner_player = self.get_user_by_symbol(winner.get_symbol())
+        result.draw_feedback()
 
-        self.winner_feedback()
-        print(winner_player)
+        if (isinstance(result, WinnerFeedback)):
+            winner_player = self.get_user_by_symbol(result.get_symbol())
+            print(winner_player)
 
         self._board.initialize_matrix()
         self._page.start()

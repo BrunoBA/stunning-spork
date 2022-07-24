@@ -13,9 +13,6 @@ class PlayablePage:
         self._page = None
         self._board = board
 
-    def winner_feedback(self):
-        print(Back.GREEN + "             Winner            " + Style.RESET_ALL)
-
     def initalize_users(self):
         for index, _ in enumerate(self._players):
             current_player = self._players[index]
@@ -55,7 +52,7 @@ class PlayablePage:
             player = self.get_current_user()
             board = player.play
 
-    def get_user_by_symbol(self, symbol:str):
+    def get_user_by_symbol(self, symbol:str) -> Player:
         for player in self._players:
             if (player.get_symbol() == symbol):
                 return player

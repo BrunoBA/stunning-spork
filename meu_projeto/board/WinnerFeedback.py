@@ -1,3 +1,4 @@
+from colorama import Back, Style
 from meu_projeto.board.BoardFeedback import BoardFeedback
 
 class WinnerFeedback(BoardFeedback):
@@ -9,3 +10,6 @@ class WinnerFeedback(BoardFeedback):
         mother_str = super().__str__()
         
         return mother_str + "\nType: {}".format(self._type_of_winner)
+
+    def draw_feedback(self):
+        print(Back.GREEN + "             Winner            " + Style.RESET_ALL)
