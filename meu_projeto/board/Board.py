@@ -10,8 +10,11 @@ class Board:
 
     EMPTY_VALUE = " "
 
-    def __init__(self) -> None:
-        self.initialize_matrix()
+    def __init__(self, matrix = None) -> None:
+        if matrix is not None: 
+            self._matrix = matrix    
+        else:
+            self.initialize_matrix()
         """
         self._matrix = [
             ['X', 'X', 'O'],
@@ -19,6 +22,8 @@ class Board:
             ['X', ' ', ' ']
         ]
         """
+    def get_position(self, x:int, y:int) -> str:
+        return self._matrix[x][y]
     
     def draw(self) -> None:
         print(self)
