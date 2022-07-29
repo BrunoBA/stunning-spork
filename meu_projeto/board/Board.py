@@ -8,11 +8,11 @@ from meu_projeto.board.DrawFeedback import DrawFeedback
 
 class Board:
 
-    EMPTY_VALUE = " "
+    EMPTY_VALUE = ' '
 
-    def __init__(self, matrix = None) -> None:
-        if matrix is not None: 
-            self._matrix = matrix    
+    def __init__(self, matrix=None) -> None:
+        if matrix is not None:
+            self._matrix = matrix
         else:
             self.initialize_matrix()
         """
@@ -22,9 +22,10 @@ class Board:
             ['X', ' ', ' ']
         ]
         """
-    def get_position(self, x:int, y:int) -> str:
+
+    def get_position(self, x: int, y: int) -> str:
         return self._matrix[x][y]
-    
+
     def draw(self) -> None:
         print(self)
 
@@ -35,10 +36,10 @@ class Board:
         if len(line) == 0 or len(col) == 0:
             return False
 
-        if (int(col) < 1 or int(col) > 3):
+        if int(col) < 1 or int(col) > 3:
             return False
 
-        if (int(line) < 1 or int(line) > 3):
+        if int(line) < 1 or int(line) > 3:
             return False
 
         return self._matrix[int(line) - 1][int(col) - 1] == self.EMPTY_VALUE
@@ -49,58 +50,66 @@ class Board:
     def initialize_matrix(self) -> None:
         self._matrix = []
         for _ in range(0, 3):
-            self._matrix.append([self.EMPTY_VALUE, self.EMPTY_VALUE, self.EMPTY_VALUE])
+            self._matrix.append(
+                [self.EMPTY_VALUE, self.EMPTY_VALUE, self.EMPTY_VALUE]
+            )
 
     def get_feedback_colors(self, element) -> str:
         color = Fore.CYAN
-        if (element == "X"):
+        if element == 'X':
             color = Fore.RED
         return color
-    
+
     def __is_complete(self) -> bool:
-    
+
         for _, line in enumerate(self._matrix):
             for el in line:
-                if (el == self.EMPTY_VALUE):
+                if el == self.EMPTY_VALUE:
                     return False
 
         return True
 
     def __check__winner_line(self) -> Optional[BoardFeedback]:
         for line in range(0, 3):
-            line_result = "".join(self._matrix[line])
-            if (line_result == "OOO" or line_result == "XXX"):
+            line_result = ''.join(self._matrix[line])
+            if line_result == 'OOO' or line_result == 'XXX':
                 positions = [(line, 0), (line, 1), (line, 2)]
                 symbol = self._matrix[line][0]
-                return WinnerFeedback(symbol, positions, "Line")
+                return WinnerFeedback(symbol, positions, 'Line')
 
         return None
-    
+
     def __check__winner_col(self) -> Optional[BoardFeedback]:
         col_result = []
         for col in range(0, 3):
-            col_result = "".join([self._matrix[0][col], self._matrix[1][col], self._matrix[2][col]])
-            if (col_result == "OOO" or col_result == "XXX"):
+            col_result = ''.join(
+                [
+                    self._matrix[0][col],
+                    self._matrix[1][col],
+                    self._matrix[2][col],
+                ]
+            )
+            if col_result == 'OOO' or col_result == 'XXX':
                 positions = [(0, col), (1, col), (2, col)]
                 symbol = self._matrix[0][col]
-                return WinnerFeedback(symbol, positions, "Column")
+                return WinnerFeedback(symbol, positions, 'Column')
 
         return None
-    
+
     def __check__winner_secondary_diagonal(self) -> Optional[BoardFeedback]:
-        
+
         filled_diagonal = []
         positions = []
         for line_index in range(0, 3):
             for col_index in range(0, 3):
-                if (line_index + col_index == 2):
+                if line_index + col_index == 2:
                     filled_diagonal.append(self._matrix[line_index][col_index])
                     positions.append((line_index, col_index))
-        
+
         return self.__check_diagonal_diagonal(positions, filled_diagonal)
 
     def __check__winner_main_diagonal(self) -> Optional[BoardFeedback]:
-        
+
         filled_diagonal = []
         positions = []
         for x in range(0, 3):
@@ -109,27 +118,29 @@ class Board:
 
         return self.__check_diagonal_diagonal(positions, filled_diagonal)
 
-    def __check_diagonal_diagonal(self, positions, filled_diagonal) -> Optional[BoardFeedback]:
-        main_diagonal = "".join(filled_diagonal)
-        if (main_diagonal == "OOO" or main_diagonal == "XXX"):
+    def __check_diagonal_diagonal(
+        self, positions, filled_diagonal
+    ) -> Optional[BoardFeedback]:
+        main_diagonal = ''.join(filled_diagonal)
+        if main_diagonal == 'OOO' or main_diagonal == 'XXX':
             symbol = filled_diagonal[0]
-            return WinnerFeedback(symbol, positions, "Diagonal")
+            return WinnerFeedback(symbol, positions, 'Diagonal')
 
-        return None  
+        return None
 
     def check_winner(self) -> Optional[BoardFeedback]:
         checks = [
             self.__check__winner_line(),
             self.__check__winner_col(),
             self.__check__winner_secondary_diagonal(),
-            self.__check__winner_main_diagonal() 
+            self.__check__winner_main_diagonal(),
         ]
 
         for check in checks:
-            if (check is not None):
+            if check is not None:
                 return check
 
-        if(self.__is_complete()):
+        if self.__is_complete():
             return DrawFeedback()
 
         return None
@@ -137,7 +148,7 @@ class Board:
     def check_winner_symbol(self) -> Optional[str]:
 
         check = self.check_winner()
-        if (check is not None):
+        if check is not None:
             return check.get_symbol
 
         return None
@@ -157,7 +168,7 @@ class Board:
 
         result = self.check_winner()
         if result is None:
-            result = ""
+            result = ''
 
         return """
         col 1   col 2   col 3
@@ -179,4 +190,5 @@ line 3    {}   |   {}   |   {}
             copy_matrix[1][2],
             copy_matrix[2][0],
             copy_matrix[2][1],
-            copy_matrix[2][2])
+            copy_matrix[2][2],
+        )

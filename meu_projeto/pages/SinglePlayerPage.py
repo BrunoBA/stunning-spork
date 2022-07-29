@@ -1,5 +1,6 @@
 from meu_projeto.pages.PlayablePage import PlayablePage
 
+
 class SinglePlayerPage(PlayablePage):
     def __init__(self, player_one, computer, board):
         super().__init__(player_one, computer, board)
@@ -10,6 +11,4 @@ class SinglePlayerPage(PlayablePage):
 
         user.play(self._board)
 
-    
         self._page.start()
-

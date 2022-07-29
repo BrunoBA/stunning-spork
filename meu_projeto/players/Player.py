@@ -6,9 +6,9 @@ from meu_projeto.Symbol import Symbol
 
 
 class Player:
-    def __init__(self, nome="", symbol="") -> None:
-        self.name = ""
-        self.symbol = ""
+    def __init__(self, nome='', symbol='') -> None:
+        self.name = ''
+        self.symbol = ''
 
     def set_name(self, name) -> None:
         self.name = name
@@ -26,13 +26,15 @@ class Player:
     def play(self, board: Board):
         return
 
-    def invalid_option(self, text=""):
-        print(Fore.RED + "Invalid option! Try again" + Style.RESET_ALL)
-        if (len(text) > 0):
+    def invalid_option(self, text=''):
+        print(Fore.RED + 'Invalid option! Try again' + Style.RESET_ALL)
+        if len(text) > 0:
             print(Back.RED + text + Style.RESET_ALL)
 
     def __str__(self) -> str:
         return """
 Name: {}
 Symbol: {}
-""".format(self.name, Symbol(self.symbol))
+""".format(
+            self.name, Symbol(self.symbol)
+        )

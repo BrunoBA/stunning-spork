@@ -8,6 +8,7 @@ authors = ["brunobarros <1232097@gmail.com>"]
 python = "^3.9"
 psutil = "^5.9.1"
 colorama = "^0.4.5"
+blue = "^0.9.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
