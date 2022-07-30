@@ -15,13 +15,30 @@ class Board:
             self._matrix = matrix
         else:
             self.initialize_matrix()
-        """
-        self._matrix = [
-            ['X', 'X', 'O'],
-            ['O', 'O', 'X'],
-            ['X', ' ', ' ']
-        ]
-        """
+
+    def get_last_position(self) -> tuple:
+        return self._moves[len(self._moves) - 1]
+
+    def get_next_symbol(self, current_symbol: str) -> str:
+        if current_symbol == 'O':
+            return 'X'
+
+        if current_symbol == 'X':
+            return 'O'
+
+    def get_positions_available(self):
+        positions = []
+
+        for x, line in enumerate(self._matrix):
+            for y, el in line:
+                if el == self.EMPTY_VALUE:
+                    empty_position = (x, y)
+                    positions.append(empty_position)
+
+        return positions
+
+    def get_matrix(self):
+        return self._matrix
 
     def get_position(self, x: int, y: int) -> str:
         return self._matrix[x][y]
@@ -45,10 +62,14 @@ class Board:
         return self._matrix[int(line) - 1][int(col) - 1] == self.EMPTY_VALUE
 
     def set_position(self, symbol, line, col) -> None:
+        if self.is_valid_position(line, col):
+            self._moves = (line, col)
+
         self._matrix[line - 1][col - 1] = symbol
 
     def initialize_matrix(self) -> None:
         self._matrix = []
+        self._moves = []
         for _ in range(0, 3):
             self._matrix.append(
                 [self.EMPTY_VALUE, self.EMPTY_VALUE, self.EMPTY_VALUE]
