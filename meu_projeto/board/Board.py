@@ -16,7 +16,13 @@ class Board:
         else:
             self.initialize_matrix()
 
-    def get_last_position(self) -> tuple:
+    def get_move_by_round(self, round: int) -> tuple:
+        return self._moves[round]
+
+    def get_moves(self) -> tuple:
+        return self._moves
+
+    def get_last_move(self) -> tuple:
         return self._moves[len(self._moves) - 1]
 
     def get_next_symbol(self, current_symbol: str) -> str:
