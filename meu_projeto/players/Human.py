@@ -24,6 +24,9 @@ class Human(Player):
         board.set_position(self.get_symbol(), int(line), int(col))
         board.draw()
 
+    def is_computer(self) -> bool:
+        return False
+
     def draw(self) -> None:
         print(self)
 

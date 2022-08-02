@@ -19,24 +19,22 @@ class PositionSearcher:
             return board.get_last_move()
 
         if isinstance(boardFeedback, DrawFeedback):
-            return board.get_last_move()
+            return None
 
-        if (
-            isinstance(boardFeedback, WinnerFeedback)
-            and boardFeedback.get_symbol() != original_symbol
-        ):
+        if (board.is_complete()):
             return None
 
         copy_board = Board(board.get_matrix())
         positions = copy_board.get_positions_available()
 
+        current_symbol = symbol
         for position in positions:
             line, col = position
-            copy_board.set_position(symbol, line, col)
-            next_symbol = copy_board.get_next_symbol(symbol)
+            copy_board.set_position(current_symbol, line + 1, col + 1)
+            current_symbol = copy_board.get_next_symbol(current_symbol)
 
             result = self.find_position(
-                copy_board, next_symbol, original_symbol
+                copy_board, current_symbol, original_symbol
             )
             if result is not None:
                 return position

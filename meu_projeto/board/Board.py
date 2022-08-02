@@ -11,6 +11,7 @@ class Board:
     EMPTY_VALUE = ' '
 
     def __init__(self, matrix=None) -> None:
+        self._moves = []
         if matrix is not None:
             self._matrix = matrix
         else:
@@ -36,7 +37,7 @@ class Board:
         positions = []
 
         for x, line in enumerate(self._matrix):
-            for y, el in line:
+            for y, el in enumerate(line):
                 if el == self.EMPTY_VALUE:
                     empty_position = (x, y)
                     positions.append(empty_position)
@@ -68,10 +69,14 @@ class Board:
         return self._matrix[int(line) - 1][int(col) - 1] == self.EMPTY_VALUE
 
     def set_position(self, symbol, line, col) -> None:
-        if self.is_valid_position(line, col):
-            self._moves = (line, col)
+        # if self.is_valid_position(line, col):
+        parsed_line = line - 1
+        parsed_col = col - 1
+        self._moves.append((parsed_line, parsed_col))
+        self._matrix[parsed_line][parsed_col] = symbol
 
-        self._matrix[line - 1][col - 1] = symbol
+    def set_matrix(self, matrix) -> None:
+        self._matrix = matrix
 
     def initialize_matrix(self) -> None:
         self._matrix = []
@@ -87,7 +92,7 @@ class Board:
             color = Fore.RED
         return color
 
-    def __is_complete(self) -> bool:
+    def is_complete(self) -> bool:
 
         for _, line in enumerate(self._matrix):
             for el in line:
@@ -167,7 +172,7 @@ class Board:
             if check is not None:
                 return check
 
-        if self.__is_complete():
+        if self.is_complete():
             return DrawFeedback()
 
         return None

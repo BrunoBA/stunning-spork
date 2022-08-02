@@ -42,8 +42,8 @@ Digite uma opção:
         self.two_players.set_next_page(self)
 
         if option == '1':
-            # self.one_player.handle()
-            self.two_players.handle()
+            self.one_player.handle()
+            # self.two_players.handle()
 
         if option == '2':
             self.two_players.handle()

@@ -1,6 +1,7 @@
 from random import randint, shuffle
 from colorama import Fore, Back, Style
 from meu_projeto.board.Board import Board
+from meu_projeto.players.Computer import Computer
 from meu_projeto.players.Player import Player
 
 
