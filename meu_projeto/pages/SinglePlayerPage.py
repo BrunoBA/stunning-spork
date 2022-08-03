@@ -10,10 +10,10 @@ class SinglePlayerPage(PlayablePage):
         for index, _ in enumerate(self._players):
             current_player = self._players[index]
 
-            if (current_player.is_computer()):
-                current_player.set_name("CPU")
+            if current_player.is_computer():
+                current_player.set_name('CPU')
                 continue
-            
+
             extra_text = ''
             if len(current_player.get_name()) > 0:
                 extra_text = ' Press enter to fill ({})'.format(

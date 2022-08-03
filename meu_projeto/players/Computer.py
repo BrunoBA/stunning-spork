@@ -1,8 +1,8 @@
 from meu_projeto.board.Board import Board
 from meu_projeto.players.Player import Player
 from meu_projeto.players.strategies.PositionSearcher import PositionSearcher
-import time
 import copy
+
 
 class Computer(Player):
     def __init__(self):
@@ -10,13 +10,11 @@ class Computer(Player):
         self._position_searcher = PositionSearcher()
 
     def play(self, board: Board):
-        temp_board = copy.copy(board)
-        position = self._position_searcher.find_position(
-            temp_board, self.get_symbol(), self.get_symbol()
-        )
 
-        print("Position returned from Computer play")
-        print(position)
+        new_board = copy.deepcopy(board)
+        position = self._position_searcher.find_position(
+            new_board, self.get_symbol(), self.get_symbol()
+        )
 
         (line, col) = position
 

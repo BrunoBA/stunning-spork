@@ -21,7 +21,7 @@ class PositionSearcher:
         if isinstance(boardFeedback, DrawFeedback):
             return None
 
-        if (board.is_complete()):
+        if board.is_complete():
             return None
 
         copy_board = Board(board.get_matrix())
