@@ -1,15 +1,25 @@
 from meu_projeto.board.Board import Board
 from meu_projeto.board.DrawFeedback import DrawFeedback
 from meu_projeto.board.WinnerFeedback import WinnerFeedback
+from meu_projeto.players.strategies.Strategies import Strategies
 
 
 class PositionSearcher:
     def __init__(self) -> None:
-        pass
+        self._strategies = Strategies()
 
     def find_position(
         self, board: Board, symbol: str, original_symbol: str
-    ) -> tuple:
+    ) -> tuple:    
+        self._strategies.initialize_board(board, original_symbol)
+        position = self._strategies.get_winner_position()
+        if position is not None:
+            return position
+
+        self._strategies.initialize_board(board, board.get_next_symbol(original_symbol))
+        position = self._strategies.get_winner_position()
+        if position is not None:
+            return position
 
         boardFeedback = board.check_winner()
         if (

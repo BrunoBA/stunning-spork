@@ -10,10 +10,10 @@ class MainDiagonalStrategy(Strategy):
     def find_position(self) -> Optional[tuple]:
         line_to_push = []
         for x in range(0, 3):
-            element = self.get_element_by_position(x, x)
+            element = super().get_element_by_position(x, x)
             line_to_push.append(element)
 
-        pos = self.is_present(''.join(line_to_push))
+        pos = super().is_present(''.join(line_to_push))
         if pos is not None:
             return (pos, pos)
 

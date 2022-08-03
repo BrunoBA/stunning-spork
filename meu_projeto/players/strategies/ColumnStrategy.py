@@ -11,10 +11,10 @@ class ColumnStrategy(Strategy):
         line_to_push = []
         for x in range(0, 3):
             for y in range(0, 3):
-                element = self.get_element_by_position(y, x)
+                element = super().get_element_by_position(y, x)
                 line_to_push.append(element)
 
-            pos = self.is_present(''.join(line_to_push))
+            pos = super().is_present(''.join(line_to_push))
             if pos is not None:
                 return (pos, x)
             line_to_push = []
