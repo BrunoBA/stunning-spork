@@ -23,7 +23,19 @@ class Board:
     def get_moves(self) -> tuple:
         return self._moves
 
-    def get_last_move(self) -> tuple:
+    def roll_back_move(self) -> None:
+        if len(self._moves) == 0:
+            return None
+
+        last_move = self._moves[len(self._moves) - 1]
+        (line, col) = last_move
+        self._matrix[line][col] = self.EMPTY_VALUE
+        self._moves.pop()
+
+    def get_last_move(self) -> Optional[tuple]:
+        if len(self._moves) == 0:
+            return None
+
         return self._moves[len(self._moves) - 1]
 
     def get_next_symbol(self, current_symbol: str) -> str:

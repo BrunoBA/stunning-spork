@@ -9,3 +9,7 @@ copy_board = Board(board.get_matrix())
 copy_board.set_position('O', 1, 1)
 
 print(copy_board)
+
+copy_board.roll_back_move()
+
+print(copy_board)

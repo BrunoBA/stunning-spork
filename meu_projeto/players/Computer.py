@@ -16,13 +16,20 @@ class Computer(Player):
 
         # self._strategies.initialize_board(board, self.get_symbol())
         # position = self._strategies.get_winner_position()
-        
+
         new_board = copy.deepcopy(board)
+        print('Calculating positions...')
         position = self._position_searcher.find_position(
             new_board, self.get_symbol(), self.get_symbol()
         )
 
-        (line, col) = position
+        print(
+            'Best position is {} with {} moves to win'.format(
+                position.get_move(), position.get_quantity_of_moves()
+            )
+        )
+
+        (line, col) = position.get_move()
 
         board.set_position(self.get_symbol(), line + 1, col + 1)
         board.draw()
