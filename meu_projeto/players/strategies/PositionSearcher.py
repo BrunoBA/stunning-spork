@@ -32,7 +32,7 @@ class PositionSearcher:
         for index_win, winner_move in enumerate(winners_positions):
             if (
                 lower_move > winner_move.get_quantity_of_moves()
-                and winner_move.get_winner_symbol() == None
+                and winner_move.get_winner_symbol() == original_symbol
             ):
                 lower_move = winner_move.get_quantity_of_moves()
                 winner_index = index_win
@@ -95,7 +95,6 @@ class PositionSearcher:
             ):
                 move_node = MoveNode((line, col), current_symbol, None)
                 move_node.set_symbol(current_symbol)
-                move_node.set_move(position)
                 move_node.set_winner_symbol(result.get_winner_symbol())
                 move_node.set_next_move(result)
 
