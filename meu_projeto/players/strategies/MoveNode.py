@@ -45,16 +45,15 @@ class MoveNode:
         self._winner_symbol = symbol
 
     def __str__(self) -> str:
-        return """
-        _________
+        return """{3}
         Move = {0}
         Symbol = {1}
         Winner Symbol = {2}
-        _________
-        Next Node -> {3}
+        Steps to Win = {4}
         """.format(
             self._move,
             self._symbol,
             self._winner_symbol,
             str(self._next_move),
+            self.get_quantity_of_moves(),
         )
