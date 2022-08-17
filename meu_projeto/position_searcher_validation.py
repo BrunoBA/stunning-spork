@@ -4,8 +4,8 @@ from meu_projeto.players.strategies.PositionSearcher import PositionSearcher
 
 board = Board()
 
-board.set_position('X', 1, 1)
-board.set_position('O', 1, 2)
+# board.set_position('X', 1, 1)
+# board.set_position('O', 1, 2)
 # board.set_position("X", 1,3)
 # board.set_position("O", 2,1)
 # board.set_position("X", 2,2)
@@ -15,18 +15,11 @@ board.set_position('O', 1, 2)
 # board.set_position("O", 3,1)
 
 
-print(board)
+# print(board)
 
 position_searcher = PositionSearcher()
-pos = position_searcher.find_position(board, 'X', 'X')
+pos = position_searcher.find_position(board, 'X', 'X', 1)
 
-print(pos.get_move())
-(line, col) = pos.get_move()
-board.set_position(
-    'X',
-    line + 1,
-    col + 1,
-)
-
+print(pos)
 
 print(board)

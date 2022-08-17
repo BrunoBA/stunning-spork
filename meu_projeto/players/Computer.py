@@ -13,23 +13,36 @@ class Computer(Player):
         self._strategies = Strategies()
 
     def play(self, board: Board):
+        position_found = False
 
-        # self._strategies.initialize_board(board, self.get_symbol())
-        # position = self._strategies.get_winner_position()
+        self._strategies.initialize_board(board, self.get_symbol())
+        position = self._strategies.get_winner_position()
+        if position is not None:
+            position_found = True
+            (line, col) = position
 
-        new_board = copy.deepcopy(board)
-        print('Calculating positions...')
-        position = self._position_searcher.find_position(
-            new_board, self.get_symbol(), self.get_symbol()
+        self._strategies.initialize_board(
+            board, board.get_next_symbol(self.get_symbol())
         )
+        position = self._strategies.get_winner_position()
+        if position is not None:
+            position_found = True
+            (line, col) = position
 
-        print(
-            'Best position is {} with {} moves to win'.format(
-                position.get_move(), position.get_quantity_of_moves()
+        if position_found:
+            new_board = copy.deepcopy(board)
+            print('Calculating positions...')
+            position = self._position_searcher.find_position(
+                new_board, self.get_symbol(), self.get_symbol(), 1
             )
-        )
 
-        (line, col) = position.get_move()
+            print(
+                'Best position is {} with {} moves to win'.format(
+                    position.get_move(), position.get_quantity_of_moves()
+                )
+            )
+
+            (line, col) = position.get_move()
 
         board.set_position(self.get_symbol(), line + 1, col + 1)
         board.draw()
